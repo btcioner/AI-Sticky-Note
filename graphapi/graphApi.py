@@ -4,17 +4,17 @@ import uuid
 import urllib
 import re
 import requests
-import urllib2
+
 
 def get_mail():
     token_url = 'http://localhost:5000/get_token'
     get_mail_url = 'https://graph.microsoft.com/v1.0/me/messages'
-    tokenRes = urllib.urlopen(token_url)
+    tokenRes = urllib.request.urlopen(token_url)
     token = str(tokenRes.readline())
     #tokenp = re.compile(r'b\'(.*)\'')
     #token = re.findall(tokenp,token)
-    #token = token[2:]
-    #token = token[:-1]
+    token = token[2:]
+    token = token[:-1]
     #print(token)
     headers = {'User-Agent' : 'python_tutorial/1.0',
                'Authorization' : 'Bearer {0}'.format(token),
@@ -24,8 +24,8 @@ def get_mail():
     instrumentation = {'client-request-id' : request_id,
                        'return-client-request-id' : 'true'}
     headers.update(instrumentation)
-    mailReq = urllib2.Request(get_mail_url,headers=headers)
-    mailRes = urllib2.urlopen(mailReq)
+    mailReq = urllib.request.Request(get_mail_url,headers=headers)
+    mailRes = urllib.request.urlopen(mailReq)
     #print(mailRes.read())
     mail = str(mailRes.read())
     patternSubject = re.compile(r'subject":"(.*?)"')
@@ -35,12 +35,12 @@ def get_mail():
 def get_event():
     token_url = 'http://localhost:5000/get_token'
     get_event_url = 'https://graph.microsoft.com/v1.0/me/events'
-    tokenRes = urllib.urlopen(token_url)
+    tokenRes = urllib.request.urlopen(token_url)
     token = str(tokenRes.readline())
     #tokenp = re.compile(r'b\'(.*)\'')
     #token = re.findall(tokenp,token)
-    #token = token[2:]
-    #token = token[:-1]
+    token = token[2:]
+    token = token[:-1]
     headers = {'User-Agent' : 'python_tutorial/1.0',
                'Authorization' : 'Bearer {0}'.format(token),
                'Accept' : 'application/json',
@@ -49,8 +49,8 @@ def get_event():
     instrumentation = {'client-request-id' : request_id,
                        'return-client-request-id' : 'true'}
     headers.update(instrumentation)
-    eventReq = urllib2.Request(get_event_url,headers=headers)
-    eventRes = urllib2.urlopen(eventReq)
+    eventReq = urllib.request.Request(get_event_url,headers=headers)
+    eventRes = urllib.request.urlopen(eventReq)
     event = str(eventRes.read())
     patternSubject = re.compile(r'subject":"(.*?)"')
     subjectAll = re.findall(patternSubject,event)
@@ -95,12 +95,12 @@ def creat_event(subject,startTime):
     print (post_data)
     token_url = 'http://localhost:5000/get_token'
     creat_event_url = 'https://graph.microsoft.com/v1.0/me/events'
-    tokenRes = urllib.urlopen(token_url)
+    tokenRes = urllib.request.urlopen(token_url)
     token = str(tokenRes.readline())
     #tokenp = re.compile(r'b\'(.*)\'')
     #token = re.findall(tokenp,token)
-    #token = token[2:]
-    #token = token[:-1]
+    token = token[2:]
+    token = token[:-1]
     headers = {'User-Agent' : 'python_tutorial/1.0',
                'Prefer' : 'China',
                'Authorization' : 'Bearer {0}'.format(token),
@@ -118,11 +118,11 @@ def creat_event(subject,startTime):
                              params=None)
     print(creatEventRes.text)
     
-if __name__ == '__main__':
-    print(get_mail())
-    print(get_event())
-    #creat_event('a','2017-06-28T12:00:00')
-    #get_mail()
+
+print(get_mail())
+print(get_event())
+#creat_event('a','2017-06-28T12:00:00')
+#get_mail()
 
 
 
