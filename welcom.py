@@ -233,6 +233,6 @@ def demo():
 if __name__ == '__main__':
     personname ="Who?"
     happys = 'unkown?'
-    #runface()
-    #uploadimg('myface.jpg')
+    runface()
+    uploadimg('myface.jpg')
     demo()
