@@ -2,5 +2,5 @@
 
 run
 ```
-python manage.py runserver
+python welcom.py
 ```
