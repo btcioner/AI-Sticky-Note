@@ -18,3 +18,6 @@ python manage.py runserver
 
 ## facetest.py
 ### use face api
+
+## msgraphweb
+### use graph api
