@@ -220,9 +220,9 @@ def facecognitive():
 
 def demo():
     time.sleep(1)
-    #r = graphApi.get_mail()
+    r = graphApi.get_mail()
     #print type(r[0])
-    readmail('Hello,I am in BeiJing AI Hackathon!')
+    readmail(r)
 
     time.sleep(5)
     login('gaoshine')
