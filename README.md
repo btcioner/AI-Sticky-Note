@@ -14,3 +14,7 @@ python manage.py runserver
 
 ## emotion.py
 ### use emotion api
+
+
+## facetest.py
+### use face api
